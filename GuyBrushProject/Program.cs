@@ -7,11 +7,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hey yo World");
-
-            StreamWriter writer = new StreamWriter("../../test.txt");
+            /*StreamWriter writer = new StreamWriter("../../../../test.txt");
             writer.WriteLine("test de texte\nle retour à la ligne fonctionne-t-il ?\nBonne question...");
-            writer.Close();
+            writer.Close();*/
         }
     }
 }
