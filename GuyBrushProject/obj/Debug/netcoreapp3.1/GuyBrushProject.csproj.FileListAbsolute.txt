@@ -11,16 +11,3 @@ C:\Users\guill\OneDrive\Études\DUT\Semestre 2\Conception orientée objet\Évalu
 C:\Users\guill\OneDrive\Études\DUT\Semestre 2\Conception orientée objet\Évaluations\Projet final\Rhum de Guy-Brush\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.dll
 C:\Users\guill\OneDrive\Études\DUT\Semestre 2\Conception orientée objet\Évaluations\Projet final\Rhum de Guy-Brush\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.pdb
 C:\Users\guill\OneDrive\Études\DUT\Semestre 2\Conception orientée objet\Évaluations\Projet final\Rhum de Guy-Brush\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.genruntimeconfig.cache
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\bin\Debug\netcoreapp3.1\GuyBrushProject.exe
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\bin\Debug\netcoreapp3.1\GuyBrushProject.deps.json
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\bin\Debug\netcoreapp3.1\GuyBrushProject.runtimeconfig.json
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\bin\Debug\netcoreapp3.1\GuyBrushProject.runtimeconfig.dev.json
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\bin\Debug\netcoreapp3.1\GuyBrushProject.dll
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\bin\Debug\netcoreapp3.1\GuyBrushProject.pdb
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.csproj.AssemblyReference.cache
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.AssemblyInfoInputs.cache
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.AssemblyInfo.cs
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.csproj.CoreCompileInputs.cache
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.dll
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.pdb
-C:\Users\lgast\Documents\GitHub\rhumprojet\GuyBrushProject\obj\Debug\netcoreapp3.1\GuyBrushProject.genruntimeconfig.cache
