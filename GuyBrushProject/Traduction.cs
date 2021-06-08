@@ -12,7 +12,7 @@ namespace GuyBrushProject
 
         public Traduction(string nom)
         {
-            nom = nomIle;
+            nomIle = nom;
         }
 
 

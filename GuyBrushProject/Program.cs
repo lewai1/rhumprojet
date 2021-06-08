@@ -12,7 +12,6 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            int nbFichier = 1;
             bool nonTrad = false; // Tradution non faite si déjà existante
             string choixUser;
 
