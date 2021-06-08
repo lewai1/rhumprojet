@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\guill\\OneDrive\\Études\\DUT\\Semestre 2\\Conception orientée objet\\Évaluations\\Projet final\\Rhum de Guy-Brush\\GuyBrushProject\\GuyBrushProject.csproj": {}
+    "C:\\Users\\lgast\\Documents\\GitHub\\rhumprojet\\GuyBrushProject\\GuyBrushProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\guill\\OneDrive\\Études\\DUT\\Semestre 2\\Conception orientée objet\\Évaluations\\Projet final\\Rhum de Guy-Brush\\GuyBrushProject\\GuyBrushProject.csproj": {
+    "C:\\Users\\lgast\\Documents\\GitHub\\rhumprojet\\GuyBrushProject\\GuyBrushProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\guill\\OneDrive\\Études\\DUT\\Semestre 2\\Conception orientée objet\\Évaluations\\Projet final\\Rhum de Guy-Brush\\GuyBrushProject\\GuyBrushProject.csproj",
+        "projectUniqueName": "C:\\Users\\lgast\\Documents\\GitHub\\rhumprojet\\GuyBrushProject\\GuyBrushProject.csproj",
         "projectName": "GuyBrushProject",
-        "projectPath": "C:\\Users\\guill\\OneDrive\\Études\\DUT\\Semestre 2\\Conception orientée objet\\Évaluations\\Projet final\\Rhum de Guy-Brush\\GuyBrushProject\\GuyBrushProject.csproj",
-        "packagesPath": "C:\\Users\\guill\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\guill\\OneDrive\\Études\\DUT\\Semestre 2\\Conception orientée objet\\Évaluations\\Projet final\\Rhum de Guy-Brush\\GuyBrushProject\\obj\\",
+        "projectPath": "C:\\Users\\lgast\\Documents\\GitHub\\rhumprojet\\GuyBrushProject\\GuyBrushProject.csproj",
+        "packagesPath": "C:\\Users\\lgast\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lgast\\Documents\\GitHub\\rhumprojet\\GuyBrushProject\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\guill\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lgast\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -49,18 +53,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.13, 3.1.13]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
