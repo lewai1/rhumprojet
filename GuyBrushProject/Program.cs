@@ -32,26 +32,9 @@ namespace ConsoleApp1
 
                 foreach (string fichier in fichiers)
                 {
-                    if (fichier == choixUser.Replace(".clair", ".chiffre"))
+                    if (fichier == cheminTXT + choixUser.Replace(".clair", ".chiffre"))
                     {
-                        Console.WriteLine("Un fichier chiffre de cette carte existe deja !");
-                        nonTrad = true;
-                    }
-                }
-                if (nonTrad == false)
-                {
-                    Dechiffrage carte = new Dechiffrage(choixUser);
-                    carte.dechiffrage();
-                }
-
-            }
-            else if (choixUser.EndsWith(".chiffre"))
-            {
-                foreach (string fichier in fichiers)
-                {
-                    if (fichier == choixUser.Replace(".chiffre", ".clair"))
-                    {
-                        Console.WriteLine("Un fichier dechiffre de cette carte existe deja !");
+                        Console.WriteLine("Un fichier .chiffre de cette carte existe deja !");
                         nonTrad = true;
                     }
                 }
@@ -59,6 +42,23 @@ namespace ConsoleApp1
                 {
                     Chiffrage carte = new Chiffrage(choixUser);
                     carte.chiffrage();
+                }
+
+            }
+            else if (choixUser.EndsWith(".chiffre"))
+            {
+                foreach (string fichier in fichiers)
+                {
+                    if (fichier == cheminTXT + choixUser.Replace(".chiffre", ".clair"))
+                    {
+                        Console.WriteLine("Un fichier .clair de cette carte existe deja !");
+                        nonTrad = true;
+                    }
+                }
+                if (nonTrad == false)
+                {
+                    Dechiffrage carte = new Dechiffrage(choixUser);
+                    carte.dechiffrage();
                 }
 
 

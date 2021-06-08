@@ -21,16 +21,19 @@ namespace GuyBrushProject
         {
             try
             {
-                StreamReader lecture = new StreamReader(adresseCarte + nomIle + ".chiffre");
-                StreamWriter ecriture = new StreamWriter(adresseCarte + nomIle + ".clair");
-                ecriture.WriteLine(ecriture);
-
-                lecture.Close(); ecriture.Close();
+                File.Copy(adresseCarte + nomIle, adresseCarte + nomIle.Replace(".chiffre", ".clair"));
             }
             catch
             {
                 Console.WriteLine("ERREUR : Fichier ne correspondant pas aux normes du traducteur.");
             }
+
+
+            /*StreamReader lecture = new StreamReader(adresseCarte + nomIle + ".chiffre");
+            StreamWriter ecriture = new StreamWriter(adresseCarte + nomIle + ".clair");
+            ecriture.WriteLine(ecriture);
+
+            lecture.Close(); ecriture.Close*/
         }
     }
 }

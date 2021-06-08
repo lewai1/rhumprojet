@@ -21,11 +21,7 @@ namespace GuyBrushProject
         {
             try
             {
-                StreamReader lecture = new StreamReader(adresseCarte + nomIle + ".clair");
-                StreamWriter ecriture = new StreamWriter(adresseCarte + nomIle + ".chiffre");
-                ecriture.WriteLine(ecriture);
-
-                lecture.Close(); ecriture.Close();
+                File.Copy(adresseCarte + nomIle, adresseCarte + nomIle.Replace(".clair", ".chiffre"));
             }
             catch
             {
