@@ -12,7 +12,7 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            bool nonTrad = false, existClair=false, existChiffre=false; // Tradution non faite si déjà existante
+            bool existClair=false, existChiffre=false; // Tradution non faite si déjà existante
             string choixUser;
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre"));
 
@@ -37,74 +37,34 @@ namespace ConsoleApp1
             if(existClair == true && existChiffre == false)
             {
                 choixUser += ".clair";
+                Chiffrage carte = new Chiffrage(choixUser);
+                carte.chiffrage();
             }
             else if (existClair == false && existChiffre == true)
             {
                 choixUser += ".chiffre";
+                Dechiffrage carte = new Dechiffrage(choixUser);
+                carte.dechiffrage();
             }
             else if (existClair == true && existChiffre == true)
             {
-                Console.WriteLine("La carte existe deja dans les deux formats.");
+                Console.WriteLine("\nLa carte existe deja dans les deux formats.");
             }
-            else 
+            else if (choixUser.EndsWith(".clair"))
             {
-                Console.WriteLine("Choix non valide.");
-            }
-
-
-            if (choixUser.EndsWith(".clair"))
-            {
-
-                foreach (string fichier in fichiers)
-                {
-                    if (fichier == cheminTXT + choixUser.Replace(".clair", ".chiffre"))
-                    {
-                        Console.WriteLine("\nUn fichier .chiffre de cette carte existe deja !");
-                        nonTrad = true;
-                    }
-                }
-                if (nonTrad == false)
-                {
-                    Chiffrage carte = new Chiffrage(choixUser);
-                    carte.chiffrage();
-                }
+                Chiffrage carte = new Chiffrage(choixUser);
+                carte.chiffrage();
 
             }
             else if (choixUser.EndsWith(".chiffre"))
             {
-                foreach (string fichier in fichiers)
-                {
-                    if (fichier == cheminTXT + choixUser.Replace(".chiffre", ".clair"))
-                    {
-                        Console.WriteLine("\nUn fichier .clair de cette carte existe deja !");
-                        nonTrad = true;
-                    }
-                }
-                if (nonTrad == false)
-                {
-                    Dechiffrage carte = new Dechiffrage(choixUser);
-                    carte.dechiffrage();
-                }
-
-
+                Dechiffrage carte = new Dechiffrage(choixUser);
+                carte.dechiffrage();
             }
-            else
+            else 
             {
-                Console.WriteLine("Choix non valide.");
+                Console.WriteLine("\nChoix non valide.");
             }
-            
-
-
-
-            /*StreamWriter sw;
-            sw = new StreamWriter("../../../../test.txt");
-            sw.WriteLine("test de texte/nle retour à la ligne fonctionne-t-il ?/nBonne question...");
-            sw.Close();*/
         }
     }
 }
-
-
-// Proposer au lancement du programme de choisir le fichier à convertir parmi les .txt présents dans le dossier grâce à Path.GetFileName
-
-// 
