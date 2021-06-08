@@ -10,7 +10,9 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             int nbFichier = 1;
-            string choixUser, cheminTXT = ("../../../../Cartes/");
+            bool nonTrad = false; //
+            string choixUser;
+            const string cheminTXT = ("../../../../Cartes/");
 
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre"));
 
@@ -25,8 +27,43 @@ namespace ConsoleApp1
             choixUser = Console.ReadLine();
 
 
-            if (choixUser.EndsWith(".clair")) Console.WriteLine("ok");
-            else if (choixUser.EndsWith(".chiffre")) Console.WriteLine("ko");
+            if (choixUser.EndsWith(".clair"))
+            {
+
+                foreach (string fichier in fichiers)
+                {
+                    if (fichier == choixUser +".chiffre")
+                    {
+                        Console.WriteLine("Un fichier chiffre de cette carte existe deja !");
+                        nonTrad = true;
+                    }
+                }
+                if (nonTrad == false)
+                {
+                    dechiffrage.Dechiffrage(choixUser);
+
+                }
+
+            }
+            else if (choixUser.EndsWith(".chiffre"))
+            {
+                foreach (string fichier in fichiers)
+                {
+                    if (fichier == choixUser + ".clair")
+                    {
+                        Console.WriteLine("Un fichier dechiffre de cette carte existe deja !");
+                        nonTrad = true;
+                    }
+                }
+                if (nonTrad == false)
+                {
+                    chiffrage.Chiffrage(choixUser);
+
+                }
+
+
+            }
+            
 
 
 
