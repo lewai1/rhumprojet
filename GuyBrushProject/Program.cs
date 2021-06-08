@@ -9,8 +9,8 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int nbFichier = 1, choixUser;
-            string cheminTXT = ("../../../../Cartes/");
+            int nbFichier = 1;
+            string choixUser, cheminTXT = ("../../../../Cartes/");
 
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre"));
 
@@ -21,28 +21,12 @@ namespace ConsoleApp1
             }
             Console.Write("Choix : ");
 
-            try
-            {
-                choixUser = Convert.ToInt32(Console.ReadLine()) - 1; // -1 pour faire correspondre le choix du joueur avec la numérotation de la liste fichiers
-                while ((choixUser < 0) || (choixUser > nbFichier - 2))
-                {
-                    Console.Write("Veuillez faire un choix valide : ");
-                    choixUser = Convert.ToInt32(Console.ReadLine()) - 1;
-                }
-            }
-            catch
-            {
-                Console.WriteLine("\nERREUR : Valeur non valide");
-            }
+            Console.Write("Veuillez faire un choix valide : ");
+            choixUser = Console.ReadLine();
 
 
-            foreach (string fichier in fichiers)
-            {
-                if (fichier.EndsWith(".clair")) Console.WriteLine("ok");
-                else if (fichier.EndsWith(".chiffre")) Console.WriteLine("ko");
-                else Console.WriteLine("soucis !");
-            }
-
+            if (choixUser.EndsWith(".clair")) Console.WriteLine("ok");
+            else if (choixUser.EndsWith(".chiffre")) Console.WriteLine("ko");
 
 
 
