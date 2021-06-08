@@ -12,9 +12,8 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            bool nonTrad = false; // Tradution non faite si déjà existante
+            bool nonTrad = false, existClair=false, existChiffre=false; // Tradution non faite si déjà existante
             string choixUser;
-
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre"));
 
             Console.WriteLine("Quel fichier voulez vous traduire ?\n");
@@ -24,7 +23,33 @@ namespace ConsoleApp1
             }
             Console.Write("\nChoix : ");
             choixUser = Console.ReadLine();
-
+            foreach (string fichier in fichiers)
+            {
+                if (fichier == cheminTXT + choixUser + ".clair")
+                {
+                    existClair = true; 
+                }
+                if (fichier == cheminTXT + choixUser + ".chiffre")
+                {
+                    existChiffre = true;
+                }
+            }
+            if(existClair == true && existChiffre == false)
+            {
+                choixUser += ".clair";
+            }
+            else if (existClair == false && existChiffre == true)
+            {
+                choixUser += ".chiffre";
+            }
+            else if (existClair == true && existChiffre == true)
+            {
+                Console.WriteLine("La carte existe deja dans les deux formats.");
+            }
+            else 
+            {
+                Console.WriteLine("Choix non valide.");
+            }
 
 
             if (choixUser.EndsWith(".clair"))
