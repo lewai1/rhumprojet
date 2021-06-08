@@ -8,7 +8,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             int nbFichier = 1, choixUser;
-            string cheminTXT = ("C:/Users/guill/OneDrive/Études/DUT/Semestre 2/Conception orientée objet/Évaluations/Projet final/");
+            string cheminTXT = ("../../../../../Cartes/");
             string[] fichiers = Directory.GetFiles(cheminTXT, "*.txt");
             Console.WriteLine("Quel fichier voulez vous traduire ?\n");
             foreach (string fichier in fichiers)
