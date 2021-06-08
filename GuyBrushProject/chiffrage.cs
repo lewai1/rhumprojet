@@ -19,14 +19,7 @@ namespace GuyBrushProject
 
         public void chiffrage()
         {
-            try
-            {
-                File.Copy(adresseCarte + nomIle, adresseCarte + nomIle.Replace(".clair", ".chiffre"));
-            }
-            catch
-            {
-                Console.WriteLine("ERREUR : Fichier ne correspondant pas aux normes du traducteur.\n");
-            }
+            
         }
     }
 }

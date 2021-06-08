@@ -24,50 +24,37 @@ namespace GuyBrushProject
                 File.Copy(adresseCarte + nomIle, adresseCarte + nomIle.Replace(".chiffre", ".clair"));
 
 
-                string line = null;
-                List<string> lines = new List<string>();
+                string line;
                 StreamReader lecture = new StreamReader(adresseCarte + nomIle.Replace(".chiffre", ".clair"));
-                for (int i = 0; i < lines.Count; i++)
-                {
-                    lines.Add(line);
-                }
+                line = lecture.ReadLine();
                 lecture.Close();
 
-
-                for (int i = 1; i <= 10; i++)
-                {
-                    lines[i].Replace("|", "\n");
-                }
-
-
+                string[] lines = line.Split('|');
 
                 StreamWriter ecriture = new StreamWriter(adresseCarte + nomIle.Replace(".chiffre", ".clair"));
-                for (int i = 0; i < lines.Count; i++)
+                foreach (string x in lines)
                 {
-                    if (i < lines.Count - 1) Console.WriteLine(lines[i]);
-                    else Console.Write(lines[i]);
+                    ecriture.WriteLine(x);
                 }
                 ecriture.Close();
 
 
 
-                lecture = new StreamReader(adresseCarte + nomIle.Replace(".chiffre", ".clair"));
+                //convertir en carte
+
+
+
+                /*lecture = new StreamReader(adresseCarte + nomIle.Replace(".chiffre", ".clair"));
                 while ((line = lecture.ReadLine()) != null)
                 {
                     Console.WriteLine(line);
                 }
-                lecture.Close();
+                lecture.Close();*/
             }
             catch
             {
                 Console.WriteLine("ERREUR : Fichier ne correspondant pas aux normes du traducteur.\n");
             }
-
-
-            /*StreamWriter ecriture = new StreamWriter(adresseCarte + nomIle + ".clair");
-            ecriture.WriteLine(ecriture);
-
-            lecture.Close(); ecriture.Close*/
         }
     }
 }
