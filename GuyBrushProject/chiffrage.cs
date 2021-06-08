@@ -25,7 +25,7 @@ namespace GuyBrushProject
             }
             catch
             {
-                Console.WriteLine("ERREUR : Fichier ne correspondant pas aux normes du traducteur.");
+                Console.WriteLine("ERREUR : Fichier ne correspondant pas aux normes du traducteur.\n");
             }
         }
     }
