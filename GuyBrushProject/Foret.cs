@@ -26,12 +26,6 @@ namespace GuyBrushProject
         /// </summary>
         /// <param name="nb"></param>
 
-        #region Constructeur
-        /// <summary>
-        /// Constructeur de la classe foret
-        /// </summary>
-        /// <param name="nb"></param>
-
         public Foret(int nb) : base(nb)
         {
             lettreParc = 'F';

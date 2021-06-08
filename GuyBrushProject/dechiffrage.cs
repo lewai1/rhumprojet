@@ -1,10 +1,36 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
 namespace GuyBrushProject
 {
-    class dechiffrage
+    class Dechiffrage : Traduction
     {
+        const string adresseCarte = ("../../../../Cartes/");
+        string nomIle;
+
+        public Dechiffrage(string nom):base(nom)
+        {
+            nomIle = nom;
+        }
+
+
+
+        public void dechiffrage()
+        {
+            try
+            {
+                StreamReader lecture = new StreamReader(adresseCarte + nomIle + ".chiffre");
+                StreamWriter ecriture = new StreamWriter(adresseCarte + nomIle + ".clair");
+                ecriture.WriteLine(ecriture);
+
+                lecture.Close(); ecriture.Close();
+            }
+            catch
+            {
+                Console.WriteLine("ERREUR : Fichier ne correspondant pas aux normes du traducteur.");
+            }
+        }
     }
 }

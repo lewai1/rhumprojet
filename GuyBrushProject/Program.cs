@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GuyBrushProject;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,24 +8,24 @@ namespace ConsoleApp1
 {
     class Program
     {
+        const string cheminTXT = ("../../../../Cartes/");
+
         static void Main(string[] args)
         {
             int nbFichier = 1;
-            bool nonTrad = false; //
+            bool nonTrad = false; // Tradution non faite si déjà existante
             string choixUser;
-            const string cheminTXT = ("../../../../Cartes/");
 
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre"));
 
             Console.WriteLine("Quel fichier voulez vous traduire ?\n");
             foreach (string fichier in fichiers)
             {
-                Console.WriteLine("{0} : {1}\n", nbFichier++, (fichier.Substring(fichier.LastIndexOf("/") + 1)));
+                Console.WriteLine("{0}\n", (fichier.Substring(fichier.LastIndexOf("/") + 1)));
             }
-            Console.Write("Choix : ");
-
-            Console.Write("Veuillez faire un choix valide : ");
+            Console.Write("\nChoix : ");
             choixUser = Console.ReadLine();
+
 
 
             if (choixUser.EndsWith(".clair"))
@@ -32,7 +33,7 @@ namespace ConsoleApp1
 
                 foreach (string fichier in fichiers)
                 {
-                    if (fichier == choixUser +".chiffre")
+                    if (fichier == choixUser.Replace(".clair", ".chiffre"))
                     {
                         Console.WriteLine("Un fichier chiffre de cette carte existe deja !");
                         nonTrad = true;
@@ -40,8 +41,8 @@ namespace ConsoleApp1
                 }
                 if (nonTrad == false)
                 {
-                    dechiffrage.Dechiffrage(choixUser);
-
+                    Dechiffrage carte = new Dechiffrage(choixUser);
+                    carte.dechiffrage();
                 }
 
             }
@@ -49,7 +50,7 @@ namespace ConsoleApp1
             {
                 foreach (string fichier in fichiers)
                 {
-                    if (fichier == choixUser + ".clair")
+                    if (fichier == choixUser.Replace(".chiffre", ".clair"))
                     {
                         Console.WriteLine("Un fichier dechiffre de cette carte existe deja !");
                         nonTrad = true;
@@ -57,11 +58,15 @@ namespace ConsoleApp1
                 }
                 if (nonTrad == false)
                 {
-                    chiffrage.Chiffrage(choixUser);
-
+                    Chiffrage carte = new Chiffrage(choixUser);
+                    carte.chiffrage();
                 }
 
 
+            }
+            else
+            {
+                Console.WriteLine("Choix non valide.");
             }
             
 
