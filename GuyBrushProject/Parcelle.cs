@@ -6,14 +6,14 @@ namespace GuyBrushProject
 {
     class Parcelle
     {
-        private string lettreParc = "a";
-        private int nbInfo;
-        private int i = 1 ;
+        private char id;
+        private bool frtN, frtE, frtS, frtO;
+        private string type;
+        private int x, y;
 
         public Parcelle(int nb)
         {
-            lettreParc += 1;
-            nbInfo = nb;
+
         }
     }
 }

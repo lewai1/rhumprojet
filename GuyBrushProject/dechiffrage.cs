@@ -29,7 +29,50 @@ namespace GuyBrushProject
                 line = lecture.ReadLine();
                 lecture.Close();
 
+
+                line += "//";
+
+                foreach(int i in line)
+                {
+                    if (i >= 64)
+                    {
+                        line += "MM";
+
+                    }
+                    if (i >= 32)
+                    {
+
+                    }
+                    if (i >= 16)
+                    {
+
+                    }
+                    if (i >= 8)
+                    {
+
+                    }
+                    if (i >= 4)
+                    {
+
+                    }
+                    if (i >= 2)
+                    {
+
+                    }
+                    if (i >= 1)
+                    {
+
+                    }
+                }
+
                 string[] lines = line.Split('|');
+
+
+
+
+
+
+
 
                 StreamWriter ecriture = new StreamWriter(adresseCarte + nomIle.Replace(".chiffre", ".clair"));
                 foreach (string x in lines)
@@ -39,8 +82,7 @@ namespace GuyBrushProject
                 ecriture.Close();
 
 
-
-                //convertir en carte
+                
 
 
 
