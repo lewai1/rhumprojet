@@ -12,7 +12,7 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            bool existClair=false, existChiffre=false; // Tradution non faite si déjà existante
+            bool existClair=false, existChiffre=false;
             string choixUser;
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre"));
 
@@ -25,41 +25,37 @@ namespace ConsoleApp1
             choixUser = Console.ReadLine();
             foreach (string fichier in fichiers)
             {
-                if (fichier == cheminTXT + choixUser + ".clair")
+                if ((fichier == cheminTXT + choixUser + ".clair") || (fichier == cheminTXT + choixUser))
                 {
+                    if (fichier == cheminTXT + choixUser + ".clair")
+                    {
+                        choixUser += ".clair";
+                    }
                     existClair = true; 
                 }
-                if (fichier == cheminTXT + choixUser + ".chiffre")
+                if ((fichier == cheminTXT + choixUser + ".chiffre") || (fichier == cheminTXT + choixUser))
                 {
+                    if (fichier == cheminTXT + choixUser + ".chiffre")
+                    {
+                        choixUser += ".chiffre";
+                    }
                     existChiffre = true;
                 }
             }
-            if(existClair == true && existChiffre == false)
+
+            if ((existClair == true && existChiffre == false) && (choixUser.EndsWith(".clair")))
             {
-                choixUser += ".clair";
                 Chiffrage carte = new Chiffrage(choixUser);
                 carte.chiffrage();
             }
-            else if (existClair == false && existChiffre == true)
+            else if ((existClair == false && existChiffre == true) && (choixUser.EndsWith(".chiffre")))
             {
-                choixUser += ".chiffre";
                 Dechiffrage carte = new Dechiffrage(choixUser);
                 carte.dechiffrage();
             }
             else if (existClair == true && existChiffre == true)
             {
                 Console.WriteLine("\nLa carte existe deja dans les deux formats.");
-            }
-            else if (choixUser.EndsWith(".clair"))
-            {
-                Chiffrage carte = new Chiffrage(choixUser);
-                carte.chiffrage();
-
-            }
-            else if (choixUser.EndsWith(".chiffre"))
-            {
-                Dechiffrage carte = new Dechiffrage(choixUser);
-                carte.dechiffrage();
             }
             else 
             {

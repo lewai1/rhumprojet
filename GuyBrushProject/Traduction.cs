@@ -14,9 +14,5 @@ namespace GuyBrushProject
         {
             nomIle = nom;
         }
-
-
-
-
     }
 }
