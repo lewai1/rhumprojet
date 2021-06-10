@@ -9,7 +9,6 @@ namespace GuyBrushProject
         private int id, idParcelle;
         private char type;
         private bool frtE, frtS, frtO, frtN; // frontières est, sud, ouest & nord
-        // ajouter taille ???
 
         // constructeur de parcelles
         public Case()
@@ -54,7 +53,7 @@ namespace GuyBrushProject
         {
             this.idParcelle = idParcelle;
         }
-        public int GetidParcelle()
+        public int GetIDParcelle()
         {
             return idParcelle;
         }

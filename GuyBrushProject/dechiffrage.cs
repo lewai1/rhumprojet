@@ -277,7 +277,7 @@ namespace GuyBrushProject
 
 
 
-        //  méthode d'affichage dans la console et dans le fichier traduit de la traduction
+        // méthode d'affichage dans la console et dans le fichier traduit de la traduction
         public static void Affichage()
         {
             StreamWriter ecriture = new StreamWriter(cheminTXT + nomIle.Replace(".chiffre", ".clair"));
