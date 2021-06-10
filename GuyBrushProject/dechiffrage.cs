@@ -12,6 +12,7 @@ namespace GuyBrushProject
 
         }
 
+        // méthodes pour séparer une chaîne dans le tableau valeurUnite à chaque ':' pour colonne et '|' pour ligne
         public static void SplitChiffre(string s)
         {
             string[,] valeurUnite = new string[10, 10];
@@ -29,6 +30,7 @@ namespace GuyBrushProject
             ConversionStringInt(valeurUnite);
         }
 
+        // méthodes pour transposer le tableau de string valeurUniteString dans le tableau valeurUniteInt
         public static void ConversionStringInt(string[,] valeurUniteString)
         {
             int[,] valeurUniteInt = new int[10, 10];
@@ -48,9 +50,9 @@ namespace GuyBrushProject
             }
         }
 
+        public static List<Case> cases = new List<Case>(); // création d'une liste pour les cases
 
-
-        public static List<Parcelle> parcelles = new List<Parcelle>();
+        // méthode pour traduire les nombres de la carte chiffree
         public static void TradChiffre(int val, int id)
         {
             char type = 'P';
@@ -85,12 +87,14 @@ namespace GuyBrushProject
                 val -= 1;
                 frtN = true;
             }
-            Parcelle parcelle = new Parcelle(id, -1, type, frtE, frtS, frtO, frtN);
-            parcelles.Add(parcelle);
-
+            Case nvlCase = new Case(id, -1, type, frtE, frtS, frtO, frtN);
+            cases.Add(nvlCase);
         }
 
 
+
+
+        // méthode appelant les méthodes d'affectation des parcelles adjacentes (est, nord, ouest, sud)
         public static void DefinitionParcelleUniteAdjacente(int compt)
         {
             AffectParcelleEst(compt);
@@ -99,60 +103,139 @@ namespace GuyBrushProject
             AffectParcelleSud(compt);
         }
 
+        // 
         public static void AffectParcelleNord(int compt)
         {
             int comptNorth = 1;
-
             if ((compt - (10 * comptNorth)) >= 0)
             {
-                if (compt / 10 == 1 && parcelles[compt - (10 * comptNorth)].GetFrontiereSud() == false) parcelles[compt - (10 * comptNorth)].SetNomParcelle(parcelles[compt].GetNomParcelle());
-                while (parcelles[compt - (10 * comptNorth)].GetFrontiereSud() == false && comptNorth < compt / 10)
+                if (compt / 10 == 1 && cases[compt - (10 * comptNorth)].GetFrontiereSud() == false) cases[compt - (10 * comptNorth)].SetIDParcelle(cases[compt].GetIDParcelle());
+                while (cases[compt - (10 * comptNorth)].GetFrontiereSud() == false && comptNorth < compt / 10)
                 {
-                    parcelles[compt - (10 * comptNorth)].SetNomParcelle(parcelles[compt].GetNomParcelle());
+                    cases[compt - (10 * comptNorth)].SetIDParcelle(cases[compt].GetIDParcelle());
                     comptNorth++;
                 }
             }
         }
+        // 
         public static void AffectParcelleEst(int compt)
         {
             int comptEast = 1;
             if (compt + comptEast < 99)
             {
-                if (99 - compt == 1 && parcelles[compt].GetFrontiereEst() == false) parcelles[compt + 1].SetNomParcelle(parcelles[compt].GetNomParcelle());
-                while (parcelles[compt + comptEast].GetFrontiereOuest() == false && comptEast < (99 - compt))
+                if (99 - compt == 1 && cases[compt].GetFrontiereEst() == false) cases[compt + 1].SetIDParcelle(cases[compt].GetIDParcelle());
+                while (cases[compt + comptEast].GetFrontiereOuest() == false && comptEast < (99 - compt))
                 {
-                    parcelles[compt + comptEast].SetNomParcelle(parcelles[compt].GetNomParcelle());
+                    cases[compt + comptEast].SetIDParcelle(cases[compt].GetIDParcelle());
                     comptEast++;
                 }
             }
         }
+        // 
         public static void AffectParcelleSud(int compt)
         {
             int comptSouth = 1;
             if (compt + 10 <= 99)
             {
-                if ((99 - compt) / 10 == 1 && parcelles[compt + 10].GetFrontiereNord() == false) parcelles[compt + 10].SetNomParcelle(parcelles[compt].GetNomParcelle());
-                while (parcelles[compt + (10 * comptSouth)].GetFrontiereNord() == false && comptSouth < (99 - compt) / 10)//erreur
+                if ((99 - compt) / 10 == 1 && cases[compt + 10].GetFrontiereNord() == false) cases[compt + 10].SetIDParcelle(cases[compt].GetIDParcelle());
+                while (cases[compt + (10 * comptSouth)].GetFrontiereNord() == false && comptSouth < (99 - compt) / 10)//erreur
                 {
-                    parcelles[compt + (10 * comptSouth)].SetNomParcelle(parcelles[compt].GetNomParcelle());
+                    cases[compt + (10 * comptSouth)].SetIDParcelle(cases[compt].GetIDParcelle());
                     comptSouth++;
                 }
             }
         }
+        // 
         public static void AffectParcelleOuest(int compt)
         {
             int comptWest = 1;
             if ((compt - comptWest) >= 0)
             {
-                while (parcelles[compt - comptWest].GetFrontiereEst() == false && comptWest > compt)
+                while (cases[compt - comptWest].GetFrontiereEst() == false && comptWest > compt)
                 {
-                    parcelles[compt - comptWest].SetNomParcelle(parcelles[compt].GetNomParcelle());
+                    cases[compt - comptWest].SetIDParcelle(cases[compt].GetIDParcelle());
                     comptWest++;
                 }
             }
         }
 
+        // 
+        public static void VerificationUniteNorth(int compt)
+        {
+            int comptNorth = 0;
 
+            while (cases[compt - (comptNorth * 10)].GetFrontiereNord() == false && cases[compt].GetIDParcelle() == -1)
+            {
+                if (cases[compt - (comptNorth * 10)].GetIDParcelle() == -1) comptNorth++;
+                else cases[compt].SetIDParcelle(cases[compt - (comptNorth * 10)].GetIDParcelle());
+            }
+        }
+        // 
+        public static void VerificationUniteEast(int compt)
+        {
+            int comptEast = 0;
+            if (compt < 99)
+            {
+                if (cases[compt + 1].GetFrontiereEst() == true && cases[compt + 1].GetFrontiereOuest() == false) cases[compt].SetIDParcelle(cases[compt + 1].GetIDParcelle());
+                else
+                {
+                    while (cases[compt + comptEast].GetFrontiereEst() == false && cases[compt].GetIDParcelle() == -1)
+                    {
+                        if (cases[compt + comptEast].GetIDParcelle() == -1) comptEast++;
+                        else cases[compt].SetIDParcelle(cases[compt + comptEast].GetIDParcelle());
+                    }
+                }
+            }
+        }
+        // 
+        public static void VerificationUnitSouth(int compt)
+        {
+            int comptSouth = 0;
+            while (cases[compt + (comptSouth * 10)].GetFrontiereSud() == false && cases[compt].GetIDParcelle() == -1)
+            {
+                if (cases[compt + (comptSouth * 10)].GetIDParcelle() == -1) comptSouth++;
+                else cases[compt].SetIDParcelle(cases[compt + (comptSouth * 10)].GetIDParcelle());
+            }
+        }
+        // 
+        public static void VerificationUniteWest(int compt)
+        {
+            int comptWest = 0;
+            while (cases[compt - comptWest].GetFrontiereOuest() == false && cases[compt].GetIDParcelle() == -1)
+            {
+                if (cases[compt - comptWest].GetIDParcelle() == -1) comptWest++;
+                else cases[compt].SetIDParcelle(cases[compt - comptWest].GetIDParcelle());
+            }
+        }
+
+        // 
+        public static void ParcelleInconnu(int compt, ref int idParcelle)
+        {
+            int index = 0;
+            bool formecasespecial = false;
+            if (cases[compt].GetIDParcelle() == -1)
+            {
+                while (cases[compt + (index * 10)].GetFrontiereSud() == false && index < (99 - compt) / 10)
+                {
+                    if (cases[compt + (index * 10)].GetFrontiereSud() == false && cases[compt + (index * 10)].GetFrontiereOuest() == false) formecasespecial = true;
+                    if (cases[compt + ((index + 1) * 10)].GetFrontiereSud() == true && cases[compt + ((index + 1) * 10)].GetFrontiereOuest() == false &&
+                        cases[compt + ((index + 1) * 10)].GetFrontiereEst()) formecasespecial = true;
+                    index++;
+                }
+                if (compt > 1)
+                {
+                    if (cases[compt - 1].GetFrontiereEst() == false && cases[compt + 10].GetIDParcelle() == -1) formecasespecial = true;
+                }
+                if (formecasespecial == true) cases[compt].SetIDParcelle(-1);
+                else
+                {
+                    cases[compt].SetIDParcelle(idParcelle);
+                    idParcelle++;
+                }
+            }
+        }
+
+        // 
         public static void DefinitionParcelleUniteCentrale(int compt, ref int idParcelle)
         {
 
@@ -160,104 +243,30 @@ namespace GuyBrushProject
             VerificationUniteNorth(compt);
             VerificationUniteWest(compt);
             VerificationUnitSouth(compt);
-            //ParcelleInconnu(compt, ref idParcelle);
+            ParcelleInconnu(compt, ref idParcelle);
         }
 
-        public static void VerificationUniteNorth(int compt)
-        {
-            int comptNorth = 0;
-
-            while (parcelles[compt - (comptNorth * 10)].GetFrontiereNord() == false && parcelles[compt].GetNomParcelle() == -1)
-            {
-                if (parcelles[compt - (comptNorth * 10)].GetNomParcelle() == -1) comptNorth++;
-                else parcelles[compt].SetNomParcelle(parcelles[compt - (comptNorth * 10)].GetNomParcelle());
-            }
-        }
-        public static void VerificationUniteEast(int compt)
-        {
-            int comptEast = 0;
-            if (compt < 99)
-            {
-                if (parcelles[compt + 1].GetFrontiereEst() == true && parcelles[compt + 1].GetFrontiereOuest() == false) parcelles[compt].SetNomParcelle(parcelles[compt + 1].GetNomParcelle());
-                else
-                {
-                    while (parcelles[compt + comptEast].GetFrontiereEst() == false && parcelles[compt].GetNomParcelle() == -1)
-                    {
-                        if (parcelles[compt + comptEast].GetNomParcelle() == -1) comptEast++;
-                        else parcelles[compt].SetNomParcelle(parcelles[compt + comptEast].GetNomParcelle());
-                    }
-                }
-            }
-        }
-        public static void VerificationUnitSouth(int compt)
-        {
-            int comptSouth = 0;
-            while (parcelles[compt + (comptSouth * 10)].GetFrontiereSud() == false && parcelles[compt].GetNomParcelle() == -1)
-            {
-                if (parcelles[compt + (comptSouth * 10)].GetNomParcelle() == -1) comptSouth++;
-                else parcelles[compt].SetNomParcelle(parcelles[compt + (comptSouth * 10)].GetNomParcelle());
-            }
-        }
-        public static void VerificationUniteWest(int compt)
-        {
-            int comptWest = 0;
-            while (parcelles[compt - comptWest].GetFrontiereOuest() == false && parcelles[compt].GetNomParcelle() == -1)
-            {
-                if (parcelles[compt - comptWest].GetNomParcelle() == -1) comptWest++;
-                else parcelles[compt].SetNomParcelle(parcelles[compt - comptWest].GetNomParcelle());
-            }
-        }
-
-        
-
-        /*public static void ParcelleInconnu(int compt, ref int idParcelle)
-        {
-            int index = 0;
-            bool formeParcelleSpecial = false;
-            if (parcelles[compt].GetNomParcelle() == -1)
-            {
-                while (parcelles[compt + (index * 10)].GetFrontiereSud() == false && index < (99 - compt) / 10)
-                {
-                    if (parcelles[compt + (index * 10)].GetFrontiereSud() == false && parcelles[compt + (index * 10)].GetFrontiereOuest() == false) formeParcelleSpecial = true;
-                    if (parcelles[compt + ((index + 1) * 10)].GetFrontiereSud() == true && parcelles[compt + ((index + 1) * 10)].GetFrontiereOuest() == false &&
-                        parcelles[compt + ((index + 1) * 10)].GetFrontiereEst()) formeParcelleSpecial = true;
-                    index++;
-                }
-                if (compt > 1)
-                {
-                    if (parcelles[compt - 1].GetFrontiereEst() == false && parcelles[compt + 10].GetNomParcelle() == -1) formeParcelleSpecial = true;
-                }
-                if (formeParcelleSpecial == true) parcelles[compt].SetNomParcelle(-1);
-                else
-                {
-                    parcelles[compt].SetNomParcelle(idParcelle);
-                    idParcelle++;
-                }
-            }
-        }*/
-
-        
-
+        // 
         public static void DefinitionParcelle()
         {
             int idParcelle = 1;
             for (int compt = 0; compt < 100; compt++)
             {
-                if (parcelles[compt].GetType() == 0)
+                if (cases[compt].GetType() == 0)
                 {
-                    if (parcelles[compt].GetNomParcelle() == -1)
+                    if (cases[compt].GetIDParcelle() == -1)
                     {
                         DefinitionParcelleUniteCentrale(compt, ref idParcelle);
                     }
                     else
                     {
-                        if (parcelles[compt].GetFrontiereOuest() == false && parcelles[compt - 1].GetNomParcelle() != parcelles[compt].GetNomParcelle() && parcelles[compt - 1].GetNomParcelle() != -1)
+                        if (cases[compt].GetFrontiereOuest() == false && cases[compt - 1].GetIDParcelle() != cases[compt].GetIDParcelle() && cases[compt - 1].GetIDParcelle() != -1)
                         {
-                            parcelles[compt].SetNomParcelle(parcelles[compt - 1].GetNomParcelle());
+                            cases[compt].SetIDParcelle(cases[compt - 1].GetIDParcelle());
                         }
-                        else if (parcelles[compt].GetFrontiereNord() == false && parcelles[compt - 10].GetNomParcelle() != parcelles[compt].GetNomParcelle() && parcelles[compt - 10].GetNomParcelle() != -1)
+                        else if (cases[compt].GetFrontiereNord() == false && cases[compt - 10].GetIDParcelle() != cases[compt].GetIDParcelle() && cases[compt - 10].GetIDParcelle() != -1)
                         {
-                            parcelles[compt].SetNomParcelle(parcelles[compt - 10].GetNomParcelle());
+                            cases[compt].SetIDParcelle(cases[compt - 10].GetIDParcelle());
                         }
                     }
                     DefinitionParcelleUniteAdjacente(compt);
@@ -265,24 +274,28 @@ namespace GuyBrushProject
             }
         }
 
+
+
+
+        //  méthode d'affichage dans la console et dans le fichier traduit de la traduction
         public static void Affichage()
         {
             StreamWriter ecriture = new StreamWriter(cheminTXT + nomIle.Replace(".chiffre", ".clair"));
             for (int compt = 0; compt < 100; compt++)
             {
-                if (parcelles[compt].GetType() == 'P')
+                if (cases[compt].GetType() == 'P')
                 {
                     Console.ResetColor();
-                    Console.Write((char)(parcelles[compt].GetNomParcelle() - 1 + 'a') + " ");
-                    ecriture.Write((char)(parcelles[compt].GetNomParcelle() - 1 + 'a') + " ");
+                    Console.Write((char)(cases[compt].GetIDParcelle() - 1 + 'a') + " ");
+                    ecriture.Write((char)(cases[compt].GetIDParcelle() - 1 + 'a') + " ");
                 }
-                if (parcelles[compt].GetType() == 'M')
+                if (cases[compt].GetType() == 'M')
                 {
                     Console.ForegroundColor = ConsoleColor.Blue;
                     Console.Write("M ");
                     ecriture.Write("M ");
                 }
-                if (parcelles[compt].GetType() == 'F')
+                if (cases[compt].GetType() == 'F')
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("F ");
