@@ -7,12 +7,22 @@ namespace GuyBrushProject
 {
     class Traduction
     {
-        const string cheminTXT = ("../../../../Cartes/");
-        string nomIle;
+        protected static string nomIle;
+        protected const string cheminTXT = ("../../../../Cartes/");
 
-        public Traduction(string nom)
+        public Traduction(string n)
         {
-            nomIle = nom;
+            nomIle = n;
+        }
+
+        public static string Lecture(string n)
+        {
+            string line;
+            nomIle = n;
+            StreamReader lecture = new StreamReader(cheminTXT + nomIle);
+            line = lecture.ReadLine();
+            lecture.Close();
+            return line;
         }
     }
 }

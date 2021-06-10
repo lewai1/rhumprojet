@@ -7,19 +7,9 @@ namespace GuyBrushProject
 {
     class Chiffrage : Traduction
     {
-        const string adresseCarte = ("../../../../Cartes/");
-        string nomIle;
-
-        public Chiffrage(string nom) : base(nom)
+        public Chiffrage(string n):base(n)
         {
-            nomIle = nom;
-        }
 
-
-
-        public void chiffrage()
-        {
-            
         }
     }
 }
