@@ -8,10 +8,12 @@ namespace ConsoleApp1
 {
     class Program
     {
+        
         private const string cheminTXT = ("../../../../Cartes/"); // chemin d'adresse relatif
 
         static void Main(string[] args)
         {
+            delete(("../../../../Cartes/louca.chiffre"));
             bool existClair=false, existChiffre=false; // pour vérifier si une traduction existe déjà
             string choixUser;
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre")); // 'liste' de tous les fichiers présents dans cheminTXT
@@ -70,6 +72,22 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Choix non valide.");
             }
+
         }
+        public static void delete(string chemin)
+        {
+            try
+            {
+                File.Delete(chemin);
+                Console.WriteLine($"{chemin} a ete supprimer avec succes!");
+            }
+            catch(Exception E)
+            {
+                Console.WriteLine(" Pas de fichier ou erreur");
+            }
+        }
+
+
+
     }
 }

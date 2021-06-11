@@ -5,6 +5,7 @@ using System.Text;
 
 namespace GuyBrushProject
 {
+    
     class Chiffrage : Traduction
     {
         public Chiffrage(string n) : base(n)
