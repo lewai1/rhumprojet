@@ -42,6 +42,12 @@ namespace ConsoleApp1
             if (existClair == true && existChiffre == false)
             {
                 choixUser += ".clair";
+                Traduction carte = new Traduction(choixUser);
+                StreamWriter ecriture = new StreamWriter(cheminTXT + choixUser.Replace(".clair", ".chiffre"));
+                Chiffrage.SplitTab(Chiffrage.Lecture(choixUser));
+                ecriture.Close();
+                //Chiffrage.SplitTab(Traduction.Lecture(choixUser));
+                //Chiffrage.Affichage();
             }
 
             // lancement du décodage
@@ -49,7 +55,7 @@ namespace ConsoleApp1
             {
                 choixUser += ".chiffre";
                 Traduction carte = new Traduction(choixUser);
-                Dechiffrage.SplitChiffre(Traduction.Lecture(choixUser));
+                Dechiffrage.SplitChiffre(Dechiffrage.Lecture(choixUser));
                 Dechiffrage.Affichage();
             }
 

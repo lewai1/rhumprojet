@@ -13,8 +13,8 @@ namespace GuyBrushProject
         // constructeur de parcelles
         public Case()
         {
-            id = -1;
-            idParcelle = -1;
+            id = 0;
+            idParcelle = 0;
             type = 'P';
             frtE = false; frtS = false; frtO = false; frtN = false; 
         }
