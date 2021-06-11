@@ -13,7 +13,7 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            delete(("../../../../Cartes/louca.chiffre"));
+            delete(("../../../../Cartes/monhumour.chiffre"));
             bool existClair=false, existChiffre=false; // pour vérifier si une traduction existe déjà
             string choixUser;
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre")); // 'liste' de tous les fichiers présents dans cheminTXT
@@ -74,12 +74,18 @@ namespace ConsoleApp1
             }
 
         }
-        public static void delete(string chemin)
+        public static void delete(string chemin)// supprime le fichier correspondant au parametre.
         {
             try
             {
-                File.Delete(chemin);
-                Console.WriteLine($"{chemin} a ete supprimer avec succes!");
+                if (File.Exists(chemin))
+                {
+                    File.Delete(chemin);
+                    Console.WriteLine($"{chemin} a ete supprimer avec succes!");
+                }
+                else
+                    Console.WriteLine("Le fichier n'existe pas!");
+                    
             }
             catch(Exception E)
             {
