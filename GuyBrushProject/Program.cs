@@ -13,7 +13,8 @@ namespace ConsoleApp1
 
         static void Main(string[] args)
         {
-            delete(("../../../../Cartes/monhumour.chiffre"));
+            //delete(("../../../../Cartes/monhumour.chiffre"));
+            //delete(("../../../../Cartes/test.chiffre"));
             bool existClair=false, existChiffre=false; // pour vérifier si une traduction existe déjà
             string choixUser;
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre")); // 'liste' de tous les fichiers présents dans cheminTXT
@@ -22,7 +23,12 @@ namespace ConsoleApp1
             // affichage de la précédente 'liste'
             foreach (string fichier in fichiers)
             {
+                if (fichier.EndsWith(".clair"))
+                    Console.ForegroundColor = ConsoleColor.Green;
+                else
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("{0}\n", (fichier.Substring(fichier.LastIndexOf("/") + 1)));
+                Console.ResetColor();
             }
 
             Console.Write("\nChoix : ");
