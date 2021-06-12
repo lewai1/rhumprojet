@@ -15,15 +15,16 @@ namespace GuyBrushProject
         {
 
         }
-        
+        /// <summary>
+        /// Méthode Lecture, permettant de lire dans un fichier (.txt, .clair, .chiffre, etc) et de retourner le texte qu'il contient
+        /// </summary>
         public static string Lecture(string n)
         {
             nomIle = n;
-            string line;
-            line = File.ReadAllText(cheminTXT + nomIle);
-            line = line.Replace(System.Environment.NewLine, "");
-            return line;
+            string lines = File.ReadAllText(cheminTXT + nomIle);
+            return lines;
         }
+<<<<<<< HEAD
         #endregion
 
         #region Méthodes
@@ -31,60 +32,43 @@ namespace GuyBrushProject
         /// Méthodes pour faire en  une chaîne dans le tableau valeurUnite à chaque ':' pour colonne et '|' pour ligne
         /// </summary>
         public static string SplitLettre(string s)
+=======
+        /// <summary>
+        /// Méthodes pour faire en  une chaîne dans le tableau valeurUnite à chaque ':' pour colonne et '|' pour ligne
+        /// </summary>
+        public static void SplitTab(string s)
+>>>>>>> parent of f28ba28 (Chiffrage bancal :/ et ajustements)
         {
-            int i;
-            double j = 0;
-            for (i = 10; i < 100; i += 10)
+            string[,] valeurCase = new string[10, 10];
+            int ligne = 0, colonne = 0;
+            foreach (char c in s)
             {
-                s = s.Insert(i + Convert.ToInt32(j), "|");
-                j++;
+                // Changement de ligne et retour à la première colonne
+                if (c == '|')
+                {
+                    ligne++;
+                    colonne = 0;
+                }
+
+                if (c == ':') colonne++; // Avancement à la colonne suivante
+                if (c != ':' && c != '|') valeurCase[ligne, colonne] = valeurCase[ligne, colonne] + c; // Entrée des valeurs de la séquence dans leur place du tableau
             }
-            for (i = 1; i < 20; i++)
-            {
-                if ((i % 2 != 0) && (i % (19) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 21; i < 39; i++)
-            {
-                if ((i % 2 != 0) && (i % (38) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 41; i < 59; i++)
-            {
-                if ((i % 2 != 0) && (i % (58) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 60; i < 79; i++)
-            {
-                if ((i % 2 != 0) && (i % (78) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 81; i < 99; i++)
-            {
-                if ((i % 2 != 0) && (i % (98) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 100; i < 119; i++)
-            {
-                if ((i % 2 != 0) && (i % (118) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 120; i < 139; i++)
-            {
-                if ((i % 2 != 0) && (i % (138) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 140; i < 159; i++)
-            {
-                if ((i % 2 != 0) && (i % (158) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 160; i < 179; i++)
-            {
-                if ((i % 2 != 0) && (i % (178) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 180; i < 199; i++)
-            {
-                if ((i % 2 != 0) && (i % (198) != 0)) s = s.Insert(i, ":");
-            }
+<<<<<<< HEAD
             return s;
             
+=======
+            // ConversionStringInt(valeurCase);
+        }
+        public static void chiffrage(string id)
+        {
+
+>>>>>>> parent of f28ba28 (Chiffrage bancal :/ et ajustements)
         }
 
-        public static string ConvertLettreToNb(string s)
+        // méthode Lecture, permettant de lire dans un fichier (.txt, .clair, .chiffre, etc) la première ligne de texte et de la retourner
+        public static string lectureClair(string n)
         {
+<<<<<<< HEAD
             
             return s;
         }
@@ -94,11 +78,35 @@ namespace GuyBrushProject
         /// Méthode d'affichage dans la console
         /// </summary>
         public static void Affichage(string s)
-        {
-            StreamWriter ecriture = new StreamWriter(cheminTXT + nomIle.Replace(".clair", ".chiffre"));
-            ecriture.WriteLine(s); Console.WriteLine(s);
-            ecriture.Close();
+=======
+            string line;
+            nomIle = n;
+            StreamReader lecture = new StreamReader(cheminTXT + nomIle);
+            line = lecture.ReadLine(); // copie le texte du fichier mis en argument de la méthode vers line
+            lecture.Close(); // fermeture pour libérer la mémoire
+            return line;
         }
+
+
+        public static void Affichage()
+>>>>>>> parent of f28ba28 (Chiffrage bancal :/ et ajustements)
+        {
+            StreamWriter ecriture = new StreamWriter(cheminTXT + nomIle.Replace(".chiffre", ".clair"));
+            for (int i = 0; i < 100; i++)
+            {
+
+            }
+
+
+        }
+<<<<<<< HEAD
         #endregion
+=======
+        /*Note pour Moi (louca) dans le code pour pas que ca sois relou a aller chercher.
+         * Le code doit -- Lire le fiuc
+         * 
+         * 
+         */
+>>>>>>> parent of f28ba28 (Chiffrage bancal :/ et ajustements)
     }
 }
