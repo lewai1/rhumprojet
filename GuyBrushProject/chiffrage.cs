@@ -55,9 +55,12 @@ namespace GuyBrushProject
             }
 <<<<<<< HEAD
             return s;
+<<<<<<< HEAD
             
 =======
             // ConversionStringInt(valeurCase);
+=======
+>>>>>>> parent of f9aea45 (Last version)
         }
         public static void chiffrage(string id)
         {
@@ -69,7 +72,11 @@ namespace GuyBrushProject
         public static string lectureClair(string n)
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
             
+=======
+            // à faire
+>>>>>>> parent of f9aea45 (Last version)
             return s;
         }
 
