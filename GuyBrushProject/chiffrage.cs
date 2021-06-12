@@ -80,11 +80,12 @@ namespace GuyBrushProject
                 if ((i % 2 != 0) && (i % (198) != 0)) s = s.Insert(i, ":");
             }
             return s;
+            
         }
 
         public static string ConvertLettreToNb(string s)
         {
-            // à faire
+            
             return s;
         }
 

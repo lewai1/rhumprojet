@@ -26,6 +26,7 @@ namespace ConsoleApp1
             bool existClair=false, existChiffre=false; // pour vérifier si une traduction existe déjà
             string choixUser;
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre")); // 'liste' de tous les fichiers présents dans cheminTXT
+            //delete("../../../../Cartes/test.chiffre");
             Console.WriteLine("Quel fichier voulez vous traduire ?\n");
             
             // Affichage de la précédente 'liste'
@@ -95,7 +96,33 @@ namespace ConsoleApp1
                 Console.WriteLine("Choix non valide.");
             }
 
+
         }
+        #region Méthodes
+        /// <summary>
+        /// Supprime le fichier qui correspond au paramètre 
+        /// </summary>
+        public static void delete(string chemin)// supprime le fichier correspondant au parametre.
+        {
+            try
+            {
+                if (File.Exists(chemin))
+                {
+                    File.Delete(chemin);
+                    Console.WriteLine($"{chemin} a ete supprime avec succes!");
+                }
+                else
+                    Console.WriteLine("Le fichier n'existe pas!");
+
+            }
+            catch (Exception E)
+            {
+                Console.WriteLine("Pas de fichier ou erreur");
+            }
+        }
+
         #endregion
+
     }
+    #endregion
 }
