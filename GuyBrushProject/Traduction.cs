@@ -10,10 +10,11 @@ namespace GuyBrushProject
         protected static string nomIle;
         protected const string cheminTXT = ("../../../../Cartes/");
 
-        // constructeur Traduction
+        #region Constructeurs
         public Traduction(string n)
         {
             nomIle = n;
         }
+        #endregion
     }
 }

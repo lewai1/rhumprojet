@@ -6,11 +6,21 @@ using System.Linq;
 
 namespace ConsoleApp1
 {
+
+    /// <summary>
+    /// Modelise le programme
+    /// </summary>
     class Program
     {
-        
-        private const string cheminTXT = ("../../../../Cartes/"); // chemin d'adresse relatif
+        #region Attributs
 
+        /// <summary>
+        /// Chemin relatif des cartes
+        /// </summary>
+        private const string cheminTXT = ("../../../../Cartes/");
+        #endregion
+
+        #region Constructeur
         static void Main(string[] args)
         {
             //delete(("../../../../Cartes/monhumour.chiffre"));
@@ -20,7 +30,7 @@ namespace ConsoleApp1
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre")); // 'liste' de tous les fichiers présents dans cheminTXT
             Console.WriteLine("Quel fichier voulez vous traduire ?\n");
             
-            // affichage de la précédente 'liste'
+            // Affichage de la précédente 'liste'
             foreach (string fichier in fichiers)
             {
                 if (fichier.EndsWith(".clair"))
@@ -34,18 +44,24 @@ namespace ConsoleApp1
             Console.Write("\nChoix : ");
             choixUser = Console.ReadLine(); // entrée du choix du joueur
 
-            // effacement de l'extension, si elle est tapée par l'utilisateur
+            /// <summary>
+            /// Effacement de l'extension, si elle est tapée par l'utilisateur
+            /// </summary>
             if (choixUser.EndsWith(".clair")) choixUser = choixUser.Replace(".clair","");
             else if (choixUser.EndsWith(".chiffre")) choixUser = choixUser.Replace(".chiffre","");
-            
-            // vérification d'une éventuelle traduction déjà existante
+
+            /// <summary>
+            /// Vérification d'une éventuelle traduction déjà existante
+            /// </summary>
             foreach (string fichier in fichiers)
             {
                 if ((fichier == cheminTXT + choixUser + ".clair")) existClair = true;
                 else if ((fichier == cheminTXT + choixUser + ".chiffre")) existChiffre = true;
             }
 
-            // lancement du codage
+            /// <summary>
+            /// Lancement du codage
+            /// </summary>
             Console.WriteLine("\n");
             if (existClair == true && existChiffre == false)
             {
@@ -58,7 +74,9 @@ namespace ConsoleApp1
                 //Chiffrage.Affichage();
             }
 
-            // lancement du décodage
+            /// <summary>
+            /// Lancement du décodage
+            /// </summary>
             else if (existClair == false && existChiffre == true)
             {
                 choixUser += ".chiffre";
@@ -67,19 +85,29 @@ namespace ConsoleApp1
                 Dechiffrage.Affichage();
             }
 
-            // traduction déjà existante
+            /// <summary>
+            /// Si traduction déjà existante
+            /// </summary>
             else if (existClair == true && existChiffre == true)
             {
                 Console.WriteLine("La carte existe deja dans les deux formats.");
             }
 
-            // choix de l'utilisateur non valide
-            else 
+            /// <summary>
+            /// Choix de l'utilisateur non valide
+            /// </summary>
+            else
             {
                 Console.WriteLine("Choix non valide.");
             }
 
         }
+        #endregion
+
+        #region Méthodes
+        /// <summary>
+        /// Supprime le fichier qui correspond au paramètre 
+        /// </summary>
         public static void delete(string chemin)// supprime le fichier correspondant au parametre.
         {
             try
@@ -87,7 +115,7 @@ namespace ConsoleApp1
                 if (File.Exists(chemin))
                 {
                     File.Delete(chemin);
-                    Console.WriteLine($"{chemin} a ete supprimer avec succes!");
+                    Console.WriteLine($"{chemin} a ete supprime avec succes!");
                 }
                 else
                     Console.WriteLine("Le fichier n'existe pas!");
@@ -95,11 +123,11 @@ namespace ConsoleApp1
             }
             catch(Exception E)
             {
-                Console.WriteLine(" Pas de fichier ou erreur");
+                Console.WriteLine("Pas de fichier ou erreur");
             }
         }
 
-
+        #endregion
 
     }
 }

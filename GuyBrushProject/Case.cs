@@ -4,13 +4,30 @@ using System.Text;
 
 namespace GuyBrushProject
 {
+    /// <summary>
+    /// Modélisation du système de case
+    /// </summary>
     class Case
     {
+        #region Attributs
+        /// <summary>
+        /// id + idParcelle
+        /// </summary>
         private int id, idParcelle;
+        /// <summary>
+        /// Type de parcelle
+        /// </summary>
         private char type;
+        /// <summary>
+        /// Frontières
+        /// </summary>
         private bool frtE, frtS, frtO, frtN; // frontières est, sud, ouest & nord
+        #endregion
 
-        // constructeur de parcelles
+        #region Constructeurs
+        /// <summary>
+        /// Constructeur de parcelle
+        /// </summary>
         public Case()
         {
             id = 0;
@@ -18,8 +35,17 @@ namespace GuyBrushProject
             type = 'P';
             frtE = false; frtS = false; frtO = false; frtN = false; 
         }
+        #endregion
 
-        // constructeur de parcelles avec arguements
+        #region Constructeurs
+        /// <summary>
+        /// Constructeur de parcelles avec arguments
+        /// </summary>
+        /// <param name="id">id</param>
+        /// <param name="idParcelle">id de la parcelle</param>
+        /// <param name="type">Type de parcelle</param>
+        /// <param name="frtE">Frontière Est</param>
+
         public Case(int id, int idParcelle, char type, bool frtE, bool frtS, bool frtO, bool frtN)
         {
             this.id = id;
@@ -27,8 +53,12 @@ namespace GuyBrushProject
             this.type = type;
             this.frtE = frtE; this.frtS = frtS; this.frtO = frtO; this.frtN = frtN;
         }
+        #endregion
 
-        // méthodes pour initialiser l'id d'une parcelle, puis une méthode pour le retourner
+        #region Méthodes
+        /// <summary>
+        /// Méthodes pour initialiser l'id d'une parcelle, puis une méthode pour le retourner
+        /// </summary>
         public void SetId(int id)
         {
             this.id = id;
@@ -38,7 +68,9 @@ namespace GuyBrushProject
             return id;
         }
 
-        // méthodes pour initialiser le type d'une parcelle, puis une méthode pour le retourner
+        /// <summary>
+        /// Méthodes pour initialiser le type d'une parcelle, puis une méthode pour le retourner
+        /// </summary>
         public void SetType(char type)
         {
             this.type = type;
@@ -48,7 +80,9 @@ namespace GuyBrushProject
             return type;
         }
 
-        // méthodes pour initialiser l'id d'une parcelle, puis une méthode pour le retourner
+        /// <summary>
+        /// Méthodes pour initialiser l'id d'une parcelle, puis une méthode pour le retourner
+        /// </summary>
         public void SetIDParcelle(int idParcelle)
         {
             this.idParcelle = idParcelle;
@@ -58,7 +92,9 @@ namespace GuyBrushProject
             return idParcelle;
         }
 
-        // méthodes pour initialiser la frontière est d'une parcelle, puis une méthode pour la retourner
+        /// <summary>
+        /// Méthodes pour initialiser la frontière est d'une parcelle, puis une méthode pour la retourner
+        /// </summary>
         public void SetFrontiereEst(bool frtE)
         {
             this.frtE = frtE;
@@ -68,7 +104,9 @@ namespace GuyBrushProject
             return frtE;
         }
 
-        // méthodes pour initialiser la frontière sud d'une parcelle, puis une méthode pour la retourner
+        /// <summary>
+        /// Méthodes pour initialiser la frontière sud d'une parcelle, puis une méthode pour la retourner
+        /// </summary>
         public void SetFrontiereSud(bool frtS)
         {
             this.frtS = frtS;
@@ -78,7 +116,9 @@ namespace GuyBrushProject
             return frtS;
         }
 
-        // méthodes pour initialiser la frontière ouest d'une parcelle, puis une méthode pour la retourner
+        /// <summary>
+        /// Méthodes pour initialiser la frontière ouest d'une parcelle, puis une méthode pour la retourner
+        /// </summary>
         public void SetFrontiereOuest(bool frtO)
         {
             this.frtO = frtO;
@@ -88,7 +128,9 @@ namespace GuyBrushProject
             return frtO;
         }
 
-        // méthodes pour initialiser la frontière nord d'une parcelle, puis une méthode pour la retourner
+        /// <summary>
+        /// Méthodes pour initialiser la frontière nord d'une parcelle, puis une méthode pour la retourner
+        /// </summary>
         public void SetFrontiereNord(bool frtN)
         {
             this.frtN = frtN;
@@ -97,5 +139,6 @@ namespace GuyBrushProject
         {
             return frtN;
         }
+        #endregion
     }
 }
