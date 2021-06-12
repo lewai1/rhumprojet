@@ -6,10 +6,19 @@ using System.Linq;
 
 namespace ConsoleApp1
 {
+    /// <summary>
+    /// Modelise le programme.
+    /// </summary>
     class Program
     {
-        private const string cheminTXT = ("../../../../Cartes/"); // chemin d'adresse relatif
+        #region Attributs
 
+        /// <summary>
+        /// Chemin relatif des cartes.
+        /// </summary>
+        private const string cheminTXT = ("../../../../Cartes/");
+        #endregion
+        #region Constructeur
         static void Main(string[] args)
         {
             bool existClair=false, existChiffre=false; // pour vérifier si une traduction existe déjà
@@ -17,16 +26,23 @@ namespace ConsoleApp1
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre")); // 'liste' de tous les fichiers présents dans cheminTXT
             Console.WriteLine("Quel fichier voulez vous traduire ?\n");
             
-            // affichage de la précédente 'liste'
+            // Affichage de la précédente 'liste'
             foreach (string fichier in fichiers)
             {
+                if (fichier.EndsWith(".clair"))
+                    Console.ForegroundColor = ConsoleColor.Green;
+                else
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("{0}\n", (fichier.Substring(fichier.LastIndexOf("/") + 1)));
+                Console.ResetColor();
             }
 
             Console.Write("\nChoix : ");
             choixUser = Console.ReadLine(); // entrée du choix du joueur
 
-            // effacement de l'extension, si elle est tapée par l'utilisateur
+            /// <summary>
+            /// Effacement de l'extension, si elle est tapée par l'utilisateur.
+            /// </summary>
             if (choixUser.EndsWith(".clair")) choixUser = choixUser.Replace(".clair","");
             else if (choixUser.EndsWith(".chiffre")) choixUser = choixUser.Replace(".chiffre","");
             
@@ -37,7 +53,9 @@ namespace ConsoleApp1
                 else if ((fichier == cheminTXT + choixUser + ".chiffre")) existChiffre = true;
             }
 
-            // lancement du codage
+            /// <summary>
+            /// Lancement du codage.
+            /// </summary>
             Console.WriteLine("\n");
             if (existClair == true && existChiffre == false)
             {
@@ -46,7 +64,9 @@ namespace ConsoleApp1
                 Chiffrage.Affichage(Chiffrage.ConvertLettreToNb(Chiffrage.SplitLettre(Chiffrage.Lecture(choixUser))));
             }
 
-            // lancement du décodage
+            /// <summary>
+            /// Lancement du décodage.
+            /// </summary>
             else if (existClair == false && existChiffre == true)
             {
                 choixUser += ".chiffre";
@@ -55,17 +75,22 @@ namespace ConsoleApp1
                 Dechiffrage.Affichage();
             }
 
-            // traduction déjà existante
+            /// <summary>
+            /// Si la traduction existe déja.
+            /// </summary>
             else if (existClair == true && existChiffre == true)
             {
                 Console.WriteLine("La carte existe deja dans les deux formats.");
             }
 
-            // choix de l'utilisateur non valide
+            /// <summary>
+            /// Choix de l'utilisateur non valide.
+            /// </summary>
             else 
             {
                 Console.WriteLine("Choix non valide.");
             }
+            #endregion
         }
     }
 }

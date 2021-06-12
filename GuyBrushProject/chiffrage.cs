@@ -7,12 +7,17 @@ namespace GuyBrushProject
 {
     class Chiffrage : Traduction
     {
+        #region Constructeur
         public Chiffrage(string n) : base(n)
         {
 
         }
+        #endregion
 
-        // méthode Lecture, permettant de lire dans un fichier (.txt, .clair, .chiffre, etc) et de retourner le texte qu'il contient
+        #region Méthodes
+        /// <summary>
+        /// Méthodes qui met dans un string la carte clair en mettant toutes les lettre sur une seule ligne
+        /// </summary>
         public static string Lecture(string n)
         {
             nomIle = n;
@@ -22,7 +27,9 @@ namespace GuyBrushProject
             return line;
         }
 
-        // méthodes pour faire en  une chaîne dans le tableau valeurUnite à chaque ':' pour colonne et '|' pour ligne
+        /// <summary>
+        /// La méthode ajoute un ":" entre chaque caractère et un "|" tous les 10 caractères
+        /// </summary>
         public static string SplitLettre(string s)
         {
             int i;
@@ -74,18 +81,25 @@ namespace GuyBrushProject
             }
             return s;
         }
-
+        /// <summary>
+        /// La méthode aurait été utilisée pour convertir les lettres en nombres.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static string ConvertLettreToNb(string s)
         {
             // à faire
             return s;
         }
-
+        /// <summary>
+        /// Méthode d'affichage dans la console et dans le fichier créer.
+        /// </summary>
         public static void Affichage(string s)
         {
             StreamWriter ecriture = new StreamWriter(cheminTXT + nomIle.Replace(".clair", ".chiffre"));
             ecriture.WriteLine(s); Console.WriteLine(s);
             ecriture.Close();
         }
+        #endregion
     }
 }
