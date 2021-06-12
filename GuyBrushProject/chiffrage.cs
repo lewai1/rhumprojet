@@ -10,6 +10,7 @@ namespace GuyBrushProject
     /// </summary>
     class Chiffrage : Traduction
     {
+        #region Constructeur
         public Chiffrage(string n) : base(n)
         {
 
@@ -23,8 +24,12 @@ namespace GuyBrushProject
             line = line.Replace(System.Environment.NewLine, "");
             return line;
         }
+        #endregion
 
-        // méthodes pour faire en  une chaîne dans le tableau valeurUnite à chaque ':' pour colonne et '|' pour ligne
+        #region Méthodes
+        /// <summary>
+        /// Méthodes pour faire en  une chaîne dans le tableau valeurUnite à chaque ':' pour colonne et '|' pour ligne
+        /// </summary>
         public static string SplitLettre(string s)
         {
             int i;
@@ -83,11 +88,16 @@ namespace GuyBrushProject
             return s;
         }
 
+
+        /// <summary>
+        /// Méthode d'affichage dans la console
+        /// </summary>
         public static void Affichage(string s)
         {
             StreamWriter ecriture = new StreamWriter(cheminTXT + nomIle.Replace(".clair", ".chiffre"));
             ecriture.WriteLine(s); Console.WriteLine(s);
             ecriture.Close();
         }
+        #endregion
     }
 }
