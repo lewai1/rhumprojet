@@ -61,7 +61,7 @@ namespace ConsoleApp1
             {
                 choixUser += ".clair";
                 Traduction carte = new Traduction(choixUser);
-                Chiffrage.Affichage(Chiffrage.ConvertLettreToNb(Chiffrage.SplitLettre(Chiffrage.Lecture(choixUser))));
+                Chiffrage.Affichage(Chiffrage.SplitAndConvert(Chiffrage.Lecture(choixUser)));
             }
 
             /// <summary>

@@ -28,67 +28,25 @@ namespace GuyBrushProject
         }
 
         /// <summary>
-        /// La méthode ajoute un ":" entre chaque caractère et un "|" tous les 10 caractères
+        /// La méthode qui code les lettres de la carte .clair en nombres et qui ajoute ':' entre chaque caractère et '|' tous les 10 caractères
         /// </summary>
-        public static string SplitLettre(string s)
+        public static string SplitAndConvert(string s)
         {
-            int i;
-            double j = 0;
-            for (i = 10; i < 100; i+=10)
+            int i; int j = 0;
+            char[] LettresArray = s.ToCharArray(); // Création d'un tableau unidimensionnel pour y tranférer chaque lettre de s
+            s = "";
+            for (i = 0; i < 100; i++)
             {
-                s = s.Insert(i + Convert.ToInt32(j), "|");
-                j++;
+                if(LettresArray[i]=='M') s += "64"; // si case mer(ou lac)
+                else if (LettresArray[i] == 'F') s+= "32"; // si case foret
+                else  s += "15"; // si case terre (non foret)
+                if ((i % (9 + j) == 0) && (i != 0))
+                {
+                    s += "|";
+                    j += 10;
+                }
+                else if (i != 99) s += ":";
             }
-            for (i = 1; i < 20; i++)
-            {
-                if ((i % 2 != 0) && (i % (19) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 21; i < 39; i++)
-            {
-                if ((i % 2 != 0) && (i % (38) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 41; i < 59; i++)
-            {
-                if ((i % 2 != 0) && (i % (58) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 60; i < 79; i++)
-            {
-                if ((i % 2 != 0) && (i % (78) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 81; i < 99; i++)
-            {
-                if ((i % 2 != 0) && (i % (98) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 100; i < 119; i++)
-            {
-                if ((i % 2 != 0) && (i % (118) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 120; i < 139; i++)
-            {
-                if ((i % 2 != 0) && (i % (138) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 140; i < 159; i++)
-            {
-                if ((i % 2 != 0) && (i % (158) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 160; i < 179; i++)
-            {
-                if ((i % 2 != 0) && (i % (178) != 0)) s = s.Insert(i, ":");
-            }
-            for (i = 180; i < 199; i++)
-            {
-                if ((i % 2 != 0) && (i % (198) != 0)) s = s.Insert(i, ":");
-            }
-            return s;
-        }
-        /// <summary>
-        /// La méthode aurait été utilisée pour convertir les lettres en nombres.
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string ConvertLettreToNb(string s)
-        {
-            // à faire
             return s;
         }
         /// <summary>
