@@ -23,8 +23,6 @@ namespace ConsoleApp1
         #region Constructeur
         static void Main(string[] args)
         {
-            //delete(("../../../../Cartes/monhumour.chiffre"));
-            //delete(("../../../../Cartes/test.chiffre"));
             bool existClair=false, existChiffre=false; // pour vérifier si une traduction existe déjà
             string choixUser;
             IEnumerable<String> fichiers = Directory.EnumerateFiles(cheminTXT).Where(fichier => fichier.EndsWith(".clair") || fichier.EndsWith(".chiffre")); // 'liste' de tous les fichiers présents dans cheminTXT
@@ -67,11 +65,7 @@ namespace ConsoleApp1
             {
                 choixUser += ".clair";
                 Traduction carte = new Traduction(choixUser);
-                StreamWriter ecriture = new StreamWriter(cheminTXT + choixUser.Replace(".clair", ".chiffre"));
-                Chiffrage.SplitTab(Chiffrage.Lecture(choixUser));
-                ecriture.Close();
-                //Chiffrage.SplitTab(Traduction.Lecture(choixUser));
-                //Chiffrage.Affichage();
+                Chiffrage.Affichage(Chiffrage.ConvertLettreToNb(Chiffrage.SplitLettre(Chiffrage.Lecture(choixUser))));
             }
 
             /// <summary>
@@ -103,31 +97,5 @@ namespace ConsoleApp1
 
         }
         #endregion
-
-        #region Méthodes
-        /// <summary>
-        /// Supprime le fichier qui correspond au paramètre 
-        /// </summary>
-        public static void delete(string chemin)// supprime le fichier correspondant au parametre.
-        {
-            try
-            {
-                if (File.Exists(chemin))
-                {
-                    File.Delete(chemin);
-                    Console.WriteLine($"{chemin} a ete supprime avec succes!");
-                }
-                else
-                    Console.WriteLine("Le fichier n'existe pas!");
-                    
-            }
-            catch(Exception E)
-            {
-                Console.WriteLine("Pas de fichier ou erreur");
-            }
-        }
-
-        #endregion
-
     }
 }
