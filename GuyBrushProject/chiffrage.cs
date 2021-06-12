@@ -40,11 +40,37 @@ namespace GuyBrushProject
             }
             //ConversionStringInt(valeurCase);
         }
+        public static void chiffrage(string id)
+        {
+
+        }
+
+        // méthode Lecture, permettant de lire dans un fichier (.txt, .clair, .chiffre, etc) la première ligne de texte et de la retourner
+        public static string lectureClair(string n)
+        {
+            string line;
+            nomIle = n;
+            StreamReader lecture = new StreamReader(cheminTXT + nomIle);
+            line = lecture.ReadLine(); // copie le texte du fichier mis en argument de la méthode vers line
+            lecture.Close(); // fermeture pour libérer la mémoire
+            return line;
+        }
 
 
         public static void Affichage()
         {
-            
+            StreamWriter ecriture = new StreamWriter(cheminTXT + nomIle.Replace(".chiffre", ".clair"));
+            for (int i = 0; i < 100; i++)
+            {
+
+            }
+
+
         }
+        /*Note pour Moi (louca) dans le code pour pas que ca sois relou a aller chercher.
+         * Le code doit -- Lire le fiuc
+         * 
+         * 
+         */
     }
 }
